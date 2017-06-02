@@ -1,0 +1,36 @@
+{
+  "name": "ccboard.com",
+  "version": "1.0.0",
+  "description": "A data visualization website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --quiet index.js",
+    "start": "node --harmony --use_strict index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixcai/ccboard.com.git"
+  },
+  "keywords": [
+    "Data",
+    "Visualization",
+    "Component",
+    "Animation",
+    "Chart"
+  ],
+  "author": "pixcai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pixcai/ccboard.com/issues"
+  },
+  "homepage": "https://github.com/pixcai/ccboard.com#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "nunjucks": "^3.0.1",
+    "serve-static": "^1.12.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

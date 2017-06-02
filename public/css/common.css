@@ -1,0 +1,24 @@
+body {
+  color: #9cb3c9;
+  background: #0e2439;
+}
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  height: 58px;
+  line-height: 58px;
+  background: linear-gradient(to bottom,#1f364d,#0e2439);
+  border-bottom: 2px solid #1f364d;
+}
+.logo {
+  position: absolute;
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.content {
+  margin-top: 60px;
+}
