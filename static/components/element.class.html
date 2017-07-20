@@ -1,0 +1,79 @@
+<link rel="import" href="/library/polymer-2.0.1/polymer-element.html">
+<link rel="import" href="/components/dnd.class.html">
+<link rel="import" href="/components/style.rule.html">
+<script>
+  class Element extends Polymer.Element {
+    static get dataOptionsName () { return 'data-options' }
+
+    static get properties () {
+      return {
+        options: {
+          type: Object,
+          computed: 'props()'
+        }
+      }
+    }
+
+    constructor () {
+      super()
+      this.propertyRules = [StyleRule]
+    }
+
+    // Default props
+    props () { return { style: {} } }
+
+    static get observers () {
+      return [
+        'saveOptions(options.*)',
+        'onStyleChanged(options.style.*)'
+      ]
+    }
+
+    ready () {
+      super.ready()
+
+      this.addEventListener('click', () => {
+        if (CCBoard.__DEV__) {
+          console.info('[CCBoard#onComponentClick]', this)
+        }
+        window.parent.$nuxt.$store.commit('template/selected', this)
+      })
+    }
+
+    saveOptions (options) {
+      if (typeof options === 'object') {
+        this.setAttribute(
+          Element.dataOptionsName, 
+          JSON.stringify(options.path === 'options' ? options.value : options.base)
+        )
+      }
+    }
+
+    restoreOptions () {
+      // NOT IMPLEMENTATION
+    }
+
+    onStyleChanged (styleOptions) {
+      if (CCBoard.__DEV__) {
+        console.info(`[CCBoard: <${this.constructor.is}>#onStyleChanged]`, styleOptions)
+      }
+    }
+
+    setDragAndDrop () {
+      // NOT IMPLEMENTATION
+    }
+  }
+
+  function classDisplayAs (display) {
+    return class extends Element {
+      constructor () {
+        super()
+        this.style.display = display
+      }
+    }
+  }
+
+  CCBoard.BlockElement = classDisplayAs('block')
+  CCBoard.InlineElement = classDisplayAs('inline')
+  CCBoard.InlineBlockElement = classDisplayAs('inline-block')
+</script>

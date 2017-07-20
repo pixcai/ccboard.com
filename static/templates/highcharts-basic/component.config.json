@@ -1,0 +1,14 @@
+{
+  "name": "basic2",
+  "category": ["basic"],
+  "owner": ["cc"],
+  "version": "1.0.0",
+  "thumb": "thumb.png",
+  "description": "纯文本",
+  "rules": {
+    "extends": "ubold"
+  },
+  "interface": {
+    "extends": "ubold"
+  }
+}

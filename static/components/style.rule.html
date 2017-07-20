@@ -1,0 +1,69 @@
+<script>
+  StyleRule = {
+    name: 'style',
+    data: [{
+      type: 'string',
+      name: '组件宽度',
+      path: 'width',
+    }, {
+      type: 'string',
+      name: '组件高度',
+      path: 'height'
+    }, {
+      type: 'color',
+      name: '文字颜色',
+      path: 'color'
+    }, {
+      type: 'string',
+      name: '字体大小',
+      path: 'fontSize'
+    }, {
+      type: 'color',
+      name: '背景颜色',
+      path: 'backgroundColor'
+    }, {
+      type: 'image',
+      name: '背景图片',
+      path: 'backgroundImage'
+    }, {
+      type: 'select',
+      data: [{
+        name: '禁止平铺',
+        data: 'no-repeat'
+      }, {
+        name: '水平平铺',
+        data: 'repeat-x'
+      }, {
+        name: '垂直平铺',
+        data: 'repeat-y'
+      }],
+      name: '背景平铺',
+      path: 'backgroundRepeat'
+    }, {
+      type: 'string',
+      name: '边框大小',
+      path: 'borderWidth'
+    }, {
+      type: 'color',
+      name: '边框颜色',
+      path: 'borderColor'
+    }, {
+      type: 'select',
+      data: [{
+        name: '实线',
+        data: 'solid'
+      }, {
+        name: '点线',
+        data: 'dotted'
+      }, {
+        name: '虚线',
+        data: 'dashed'
+      }, {
+        name: '双线',
+        data: 'double'
+      }],
+      name: '边框样式',
+      path: 'borderStyle'
+    }]
+  }
+</script>

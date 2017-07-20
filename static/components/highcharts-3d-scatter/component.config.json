@@ -1,0 +1,11 @@
+{
+  "name": "highcharts-line",
+  "category": ["line"],
+  "owner": ["highcharts"],
+  "version": "1.0.0",
+  "thumb": "thumb.png",
+  "description": "Highcharts折线图",
+  "dependencies": [
+    "components/highcharts.html"
+  ]
+}

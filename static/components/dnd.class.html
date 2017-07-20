@@ -1,0 +1,15 @@
+<link rel="import" href="/library/polymer-2.0.1/polymer-element.html">
+
+<script>
+  function eventHandler() {
+    const hostStyle = this.shadowRoot ? this.shadowRoot.host.style : this.style
+
+    this.__border = hostStyle.border
+    this.__boxSizing = hostStyle.boxSizing
+
+    hostStyle.border = '1px solid green'
+    hostStyle.boxSizing = 'border-box'
+
+    global.parent.$nuxt.$store.commit('template/selected', this)
+  }
+</script>

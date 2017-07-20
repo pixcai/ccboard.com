@@ -1,0 +1,50 @@
+<dom-module id="cc-highcharts-3d-column">
+  <template strip-whitespace>
+    <div id="chartContainer" data-options$="[[chartOptions]]">
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+    class Highcharts3DColumn extends CCBoard.Highcharts {
+      static get is() { return 'cc-highcharts-3d-column' }
+      static get chartType() { return '3d-column' }
+
+      props() {
+        return Object.assign(super.props(), {
+          [CCBoard.Highcharts.componentType]: {
+            chart: {
+              renderTo: 'chartContainer',
+              type: 'column',
+              options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+              }
+            },
+            title: {
+              text: 'Chart rotation demo'
+            },
+            subtitle: {
+              text: 'Test options by dragging the sliders below'
+            },
+            plotOptions: {
+              column: {
+                depth: 25
+              }
+            },
+            series: [{
+              data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            }]
+          }
+        })
+      }
+      // onChartOptionsChanged (chartOptions) {
+      //   super.onChartOptionsChanged(chartOptions)
+      //   console.log(chartOptions)
+      // }
+    }
+    customElements.define(Highcharts3DColumn.is, Highcharts3DColumn)
+  </script>
+</dom-module>

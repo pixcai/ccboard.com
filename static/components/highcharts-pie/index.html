@@ -1,0 +1,76 @@
+<dom-module id="cc-highcharts-pie">
+  <template strip-whitespace>
+    <div id="chartContainer" data-options$="[[chartOptions]]">
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+    class HighchartsPie extends CCBoard.Highcharts {
+      static get is() { return 'cc-highcharts-pie' }
+      static get chartType() { return 'pie' }
+
+      props() {
+        return Object.assign(super.props(), {
+          [CCBoard.Highcharts.componentType]: {
+            chart: {
+              renderTo: 'chartContainer',
+              type: 'pie',
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false
+            },
+            title: {
+              text: 'Browser market shares January, 2015 to May, 2015'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                  enabled: true,
+                  format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                  }
+                }
+              }
+            },
+            series: [{
+              name: 'Brands',
+              colorByPoint: true,
+              data: [{
+                name: 'Microsoft Internet Explorer',
+                y: 56.33
+              }, {
+                name: 'Chrome',
+                y: 24.03,
+                sliced: true,
+                selected: true
+              }, {
+                name: 'Firefox',
+                y: 10.38
+              }, {
+                name: 'Safari',
+                y: 4.77
+              }, {
+                name: 'Opera',
+                y: 0.91
+              }, {
+                name: 'Proprietary or Undetectable',
+                y: 0.2
+              }]
+            }]
+          }
+        })
+      }
+      // onChartOptionsChanged (chartOptions) {
+      //   super.onChartOptionsChanged(chartOptions)
+      //   console.log(chartOptions)
+      // }
+    }
+    customElements.define(HighchartsPie.is, HighchartsPie)
+  </script>
+</dom-module>

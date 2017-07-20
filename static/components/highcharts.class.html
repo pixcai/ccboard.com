@@ -1,0 +1,56 @@
+<link rel="import" href="/components/chart.class.html">
+<script src="/library/lodash-4.17.4.min.js"></script>
+<script src="/library/highcharts-5.0.12/code/highcharts.js"></script>
+<script src="/library/highcharts-5.0.12/code/highcharts-3d.js"></script>
+<script src="/library/highcharts-5.0.12/code/highcharts-more.js"></script>
+<script src="/library/highcharts-5.0.12/code/modules/exporting.js"></script>
+<script>
+  CCBoard.Highcharts = class extends CCBoard.Chart {
+    ready () {
+      super.ready()
+
+      this.chart = new Highcharts.Chart(
+        this.$[this.options.chart.chart.renderTo],
+        this.options.chart
+      )
+    }
+
+    onStyleChanged (styleOptions) {
+      super.onStyleChanged(styleOptions)
+
+      let style = ''
+      let width
+      let height
+      const target = this.$[this.options.chart.chart.renderTo]
+
+      Object.keys(styleOptions.base).forEach(key => {
+        style += `${_.kebabCase(key)}:${styleOptions.base[key]};`
+      })
+      target.setAttribute('style', style)
+      if (styleOptions.base.width) {
+        width = parseInt(styleOptions.base.width)
+      }
+      if (styleOptions.base.height) {
+        height = parseInt(styleOptions.base.height)
+      }
+      if (!isNaN(width) || !isNaN(height)) {
+        this.chart.setSize(
+          isNaN(width) ? undefined : width,
+          isNaN(height) ? undefined : height
+        )
+      }
+    }
+
+    onChartOptionsChanged (chartOptions) {
+      super.onChartOptionsChanged(chartOptions)
+
+      if (this.chart) {
+        this.chart.update(chartOptions.value)
+        if (chartOptions.value.series) {
+          this.chart.series.setData(chartOptions.value.series)
+          this.chart.redraw()
+        }
+      }
+    }
+  }
+</script>

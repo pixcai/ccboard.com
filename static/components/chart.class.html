@@ -1,0 +1,17 @@
+<script>
+  CCBoard.Chart = class extends CCBoard.InlineBlockElement {
+    static get componentType () { return 'chart' }
+
+    static get observers () {
+      return [
+        `onChartOptionsChanged(options.${CCBoard.Chart.componentType}.*)`
+      ]
+    }
+
+    onChartOptionsChanged (chartOptions) {
+      if (CCBoard.__DEV__) {
+        console.info(`[CCBoard: <${this.constructor.is}>#onChartOptionsChanged]`, chartOptions)
+      }
+    }
+  }
+</script>

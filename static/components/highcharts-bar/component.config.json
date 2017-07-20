@@ -1,0 +1,11 @@
+{
+  "name": "highcharts-bar",
+  "category": ["bar"],
+  "owner": ["highcharts"],
+  "version": "1.0.0",
+  "thumb": "thumb.png",
+  "description": "Highcharts柱状图",
+  "dependencies": [
+    "components/highcharts.html"
+  ]
+}
